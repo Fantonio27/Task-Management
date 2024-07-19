@@ -28,7 +28,8 @@
 </script>
 
 <template>
-    <div :class="`${bgColor} flex-1 rounded-xl p-4 shadow-sm min-h-[480px]`">
+    <div :class="`${bgColor} flex-1 rounded-xl p-4 shadow-sm h-max lg:min-h-[480px] md:h-full`">
+        <!-- min-h-[480px] -->
         <h1 class="font-bold text-lg mb-3">{{status == "progress" ? 'In' : ''}} 
         {{status[0].toUpperCase() + status.substring(1)}} Tasks
         </h1>

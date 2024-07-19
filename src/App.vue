@@ -30,7 +30,8 @@
 </script>
 
 <template>
-  <header class="flex justify-between items-end mb-5">
+  <header class="flex flex-col justify-between items-start gap-2 mb-5 sm:items-end sm:flex-row">
+    <!-- items-end -->
     <div>
       <h1 class="font-bold text-2xl">My Tasks</h1>
       <p class=" text-sm">Drag and Drop the tasks to update its status</p>
@@ -42,7 +43,8 @@
     </button>
   </header>
 
-  <main class="flex gap-3">
+  <main class="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
+    <!-- gap-3 -->
       <CardContainer status="pending" :tasks='filterTask("pending")'/>
       <CardContainer status="progress" :tasks='filterTask("progress")'/>
       <CardContainer status="completed" :tasks='filterTask("completed")'/>
