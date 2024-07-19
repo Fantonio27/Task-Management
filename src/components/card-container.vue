@@ -3,13 +3,26 @@
     const props = defineProps<{status: string}>();
 
     const colorSets = {
-        pending: "bg-yellow-400/70",
-        progress: "bg-violet-400/70",
-        completed: "bg-green-400/70",
-        cancelled: "bg-red-400/70"
+        pending: {
+            bgColor: "bg-yellow-400/70",
+            buttonColor: "bg-yellow-700"
+        },
+        progress: {
+            bgColor: "bg-violet-400/70",
+            buttonColor: "bg-violet-900"
+        },
+        completed: {
+            bgColor: "bg-green-400/70",
+            buttonColor: "bg-green-700"
+        },
+        cancelled: {
+            bgColor: "bg-red-400/70",
+            buttonColor: "bg-red-700"
+        },
     }
 
-    const bgColor = colorSets[props.status as keyof typeof colorSets];
+    const {bgColor, buttonColor} = colorSets[props.status as keyof typeof colorSets];
+   
 </script>
 
 <template>
@@ -18,8 +31,8 @@
         {{status[0].toUpperCase() + status.substring(1)}} Tasks
         </h1>
         <div class="space-y-5">
-            <Task />
-            <Task />
+            <Task :color="buttonColor"/>
+            <Task :color="buttonColor"/>
         </div>
     </div>
 </template>
