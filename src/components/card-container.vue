@@ -13,8 +13,10 @@
 </script>
 
 <template>
-    <div :class="`${bgColor} flex-1 rounded-lg p-3 shadow-sm`">
-        <h1 class="font-bold text-lg mb-3">{{status == "progress" ? 'In' : ''}} {{status}} Tasks</h1>
+    <div :class="`${bgColor} flex-1 rounded-xl p-4 shadow-sm`">
+        <h1 class="font-bold text-lg mb-3">{{status == "progress" ? 'In' : ''}} 
+        {{status[0].toUpperCase() + status.substring(1)}} Tasks
+        </h1>
         <div class="space-y-5">
             <Task />
             <Task />
