@@ -2,6 +2,7 @@
   import { Plus } from 'lucide-vue-next';
   import Card_Container from "./components/card-container.vue"
   import { ref } from 'vue';
+  import Modal from "./components/modal.vue"
 
   const modal = ref<boolean>(false)
 </script>
@@ -28,5 +29,6 @@
       <Card_Container status="cancelled"/>
   </main>
 
-  
+  <!-- <Modal v-if="modal"/> -->
+  <Modal/>
 </template>
