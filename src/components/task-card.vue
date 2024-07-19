@@ -1,13 +1,23 @@
 <script setup lang="ts">
     import {Pen, Trash2} from 'lucide-vue-next';
     import { type Dataform } from '../types/variables';
+import axios from 'axios';
 
     const props = defineProps<{color: string, task: Dataform}>()
 
-    const {task_name, description, due_date} = props.task
+    const {id, task_name, description, due_date} = props.task
 
     const date = due_date.split('-').reverse().join('/')
 
+    function taskDelete () {
+        try{
+            axios.delete(`http://localhost:3000/tasks/${id}`).then(response => console.log(response));
+            location.reload()
+        }catch(error){
+            console.log(error)
+        }
+       
+    }
 </script>
 
 <template>
@@ -17,7 +27,7 @@
                 <Pen :size="20" color="white"/>
             </div>
             <div class="bg-red-500 hover:bg-red-600 duration-150 rounded-full p-2 w-max cursor-pointer">
-                <Trash2 :size="20" color="white"/>
+                <Trash2 :size="20" color="white" @click="taskDelete()"/>
             </div>
  
         </div>
