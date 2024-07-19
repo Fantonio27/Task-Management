@@ -1,6 +1,9 @@
 <script setup lang="ts">
   import { Plus } from 'lucide-vue-next';
   import Card_Container from "./components/card-container.vue"
+  import { ref } from 'vue';
+
+  const modal = ref<boolean>(false)
 </script>
 
 <template>
@@ -9,7 +12,11 @@
       <h1 class="font-bold text-2xl">My Tasks</h1>
       <p class=" text-sm">Drag and Drop the tasks to update its status</p>
     </div>
-    <button class="flex gap-1 h-max py-2 px-3 bg-green-600/90 hover:bg-green-600 ease-linear duration-150 text-white rounded-md font-medium text-sm shadow-sm">
+    <button 
+      class="flex gap-1 h-max py-2 px-3 bg-green-600/90 hover:bg-green-600 ease-linear duration-150 text-white rounded-md font-medium text-sm shadow-sm"
+      @click="modal = !modal"
+    >
+      
       <Plus :size="20"/> Add Task
     </button>
   </header>
@@ -21,4 +28,5 @@
       <Card_Container status="cancelled"/>
   </main>
 
+  
 </template>
