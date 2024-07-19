@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import { Plus } from 'lucide-vue-next';
+  import Card_Container from "./components/card-container.vue"
 </script>
 
 <template>
@@ -12,4 +13,12 @@
       <Plus :size="20"/> Add Task
     </button>
   </header>
+
+  <main class="flex gap-2">
+      <Card_Container status="pending"/>
+      <Card_Container status="progress"/>
+      <Card_Container status="completed"/>
+      <Card_Container status="cancelled"/>
+  </main>
+
 </template>
