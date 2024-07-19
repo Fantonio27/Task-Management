@@ -14,7 +14,7 @@
     </button>
   </header>
 
-  <main class="flex gap-2">
+  <main class="flex gap-3">
       <Card_Container status="pending"/>
       <Card_Container status="progress"/>
       <Card_Container status="completed"/>
