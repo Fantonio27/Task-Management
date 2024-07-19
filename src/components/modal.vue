@@ -45,10 +45,10 @@
             <label for="description" class="mt-3 mb-1">Status</label>
             <select class="rounded-md p-2"  v-model="dataform.status">
                     <option disabled value="">Please select one</option>
-                    <option>Pending</option>
-                    <option>Progress</option>
-                    <option>Completed</option>
-                    <option>Cancelled</option>   
+                    <option value="pending">Pending</option>
+                    <option value="progress">Progress</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>   
             </select>
 
             <label for="date" class="mt-3 mb-1">Due Date</label>
