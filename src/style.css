@@ -10,6 +10,9 @@
 }
 
 body{
-  padding: 100px;
   background-color: aliceblue;
+}
+
+#app{
+  padding: 100px;
 }

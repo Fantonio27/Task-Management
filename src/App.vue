@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { Plus } from 'lucide-vue-next';
   import Card_Container from "./components/card-container.vue"
-  import { ref } from 'vue';
+  import { ref, Teleport} from 'vue';
   import Modal from "./components/modal.vue"
 
   const modal = ref<boolean>(false)
@@ -30,5 +30,9 @@
   </main>
 
   <!-- <Modal v-if="modal"/> -->
-  <Modal/>
+  <Teleport to="body">
+    <div class="absolute top-0 bg-black/30 w-full h-screen flex items-center justify-center">
+      <Modal/>
+    </div>
+  </Teleport>
 </template>
