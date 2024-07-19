@@ -1,5 +1,5 @@
 <script setup lang="ts">
-
+    import Task from "./task-card.vue";
     const props = defineProps<{status: string}>();
 
     const colorSets = {
@@ -15,7 +15,9 @@
 <template>
     <div :class="`${bgColor} flex-1 rounded-lg p-3 shadow-sm`">
         <h1 class="font-bold text-lg mb-3">{{status == "progress" ? 'In' : ''}} {{status}} Tasks</h1>
-        <div>
+        <div class="space-y-5">
+            <Task />
+            <Task />
         </div>
     </div>
 </template>
