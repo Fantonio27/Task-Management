@@ -12,6 +12,10 @@
         status: "",
         due_date: "",
     })
+    
+    onMounted(async()=>{
+        if(props.id) dataform.value = await SearchData(props.id)
+    })
 
     function submit(){
         if(props.id){
@@ -29,10 +33,6 @@
         const year = date.getFullYear();
         return `${year}-${month <= 9 ? "0"+ month : month}-${day}`
     }
-
-    onMounted(async()=>{
-        if(props.id) dataform.value = await SearchData(props.id)
-    })
 
 </script>
 
