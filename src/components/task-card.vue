@@ -1,8 +1,8 @@
 <script setup lang="ts">
     import {Pen, Trash2} from 'lucide-vue-next';
     import { type Dataform } from '../types/variables';
-import axios from 'axios';
-
+    import { DeleteData } from '../services/api';
+    
     const props = defineProps<{color: string, task: Dataform}>()
 
     const {id, task_name, description, due_date} = props.task
@@ -11,7 +11,7 @@ import axios from 'axios';
 
     function taskDelete () {
         try{
-            axios.delete(`http://localhost:3000/tasks/${id}`).then(response => console.log(response));
+            DeleteData(id);
             location.reload()
         }catch(error){
             console.log(error)

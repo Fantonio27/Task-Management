@@ -1,8 +1,8 @@
 <script setup lang="ts">
     import { ref } from 'vue';
     import { type Dataform } from '../types/variables';
+    import { PostData } from '../services/api';
     import { X } from 'lucide-vue-next';
-import axios from 'axios';
 
     const emit = defineEmits(['closeModal']);
     
@@ -16,8 +16,8 @@ import axios from 'axios';
     })
 
     function submit(){
-        axios.post("http://localhost:3000/tasks", dataform.value).then((reponse)=> console.log(reponse))
-        emit('closeModal')
+        PostData(dataform.value);
+        emit('closeModal');
     }
 
     function DateToday () {

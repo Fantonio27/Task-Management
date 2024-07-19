@@ -4,19 +4,13 @@
   import { type Dataform } from './types/variables';
   import Card_Container from "./components/card-container.vue"
   import Modal from "./components/modal.vue"
-  import axios from 'axios';
+  import { FetchData } from './services/api';
   
   const modal = ref<boolean>(false)
   const tasks = ref<Dataform[] | []>([])
 
-  // watch(modal, async() => {
-  //   const { data } =  await axios.get("http://localhost:3000/tasks").then((data) => {return data})
-  //   tasks.value= data
-  // })
-
   onMounted(async() => {
-    const { data } =  await axios.get("http://localhost:3000/tasks").then((data) => {return data})
-    tasks.value= data
+    tasks.value = await FetchData()
   })
 
   function filterTask (status: string) {

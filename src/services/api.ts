@@ -14,6 +14,6 @@ export async function UpdataData (id: string) {
     await axios.put(`http://localhost:3000/tasks/${id}`).then((data) => {return data})
 }
 
-export async function DeleteData (id: string) {
+export async function DeleteData (id: string | undefined) {
     axios.delete(`http://localhost:3000/tasks/${id}`).then(response => { return response });
 }
