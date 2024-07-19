@@ -4,13 +4,22 @@
   import { type Dataform } from './types/variables';
   import Card_Container from "./components/card-container.vue"
   import Modal from "./components/modal.vue"
-  import { FetchData } from './services/api';
+  import { FetchData, SearchData} from './services/api';
   
   const modal = ref<boolean>(false)
   const tasks = ref<Dataform[] | []>([])
 
   onMounted(async() => {
-    tasks.value = await FetchData()
+    tasks.value = await FetchData();
+
+    const params = new URLSearchParams(window.location.search).get('id');
+
+    try{
+        await SearchData(params);
+        modal.value = true;
+    }catch(e){
+        modal.value = false;
+    }
   })
 
   function filterTask (status: string) {
