@@ -46,13 +46,13 @@
             <h1 class="font-bold uppercase text-2xl text-center">{{id? "Edit Task": "Create Task"}}</h1>
 
             <label for="task_name" class="mt-3 mb-1">Task Name</label>
-            <input type="text" id="task_name" class="rounded-md p-2" v-model="dataform.task_name" maxlength="50" minlength="2" required>
+            <input type="text" data-testId="task_name" class="rounded-md p-2" v-model="dataform.task_name" maxlength="50" minlength="2" required>
 
             <label for="description" class="mt-3 mb-1">Description</label>
-            <textarea type="text" id="description" class="rounded-md p-2" rows="4" v-model="dataform.description" maxlength="255" minlength="2" required></textarea>
+            <textarea type="text" data-testId="description" class="rounded-md p-2" rows="4" v-model="dataform.description" maxlength="255" minlength="2" required></textarea>
 
-            <label for="description" class="mt-3 mb-1">Status</label>
-            <select class="rounded-md p-2"  v-model="dataform.status" required>
+            <label for="status" class="mt-3 mb-1">Status</label>
+            <select class="rounded-md p-2" data-testId="status" v-model="dataform.status" required>
                 <option disabled value="">Please select one</option>
                 <option value="pending">Pending</option>
                 <option value="progress">Progress</option>
@@ -61,7 +61,7 @@
             </select>
 
             <label for="date" class="mt-3 mb-1">Due Date</label>
-            <input type="date" id="date" class="rounded-md p-2" :min="DateToday()" v-model="dataform.due_date" required>
+            <input type="date" data-testId="date" class="rounded-md p-2" :min="DateToday()" v-model="dataform.due_date" required>
 
             <button class="mt-5 bg-green-600/90 hover:bg-green-700 duration-150 text-white p-2 rounded-full">{{id? "Update": "Create"}}</button>
         </form>
