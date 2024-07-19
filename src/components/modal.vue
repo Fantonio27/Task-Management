@@ -1,7 +1,12 @@
 <script setup lang="ts">
     import { ref } from 'vue';
     import { type Dataform } from '../types/variables';
+    import { X } from 'lucide-vue-next';
+
+    const emit = defineEmits(['closeModal']);
     
+    const props = defineProps<{action: string}>();
+
     const dataform = ref<Dataform>({
         task_id: 0,
         task_name: "",
@@ -11,6 +16,7 @@
     })
 
     function submit(){
+        emit('closeModal')
         console.log(dataform.value)
     }
 
@@ -24,10 +30,12 @@
 </script>
 
 <template>
-    <div class="absolute bg-slate-200/80 backdrop-blur-sm p-10 rounded-xl shadow-md w-[400px]">
-        <h1 class="font-bold uppercase text-2xl text-center">Create Task</h1>
+    <div class="bg-slate-200/80 backdrop-blur-sm p-14 rounded-xl shadow-md w-[450px]">
+        <X class="absolute top-3 right-3 cursor-pointer" color="#323036" :size="28" @click="$emit('closeModal')"/>
 
         <form action="" class="grid text-sm text-slate-700" @submit.prevent="submit()">
+            <h1 class="font-bold uppercase text-2xl text-center">{{action == "edit"? "Edit Task": "Create Task"}}</h1>
+
             <label for="task_name" class="mt-3 mb-1">Task Name</label>
             <input type="text" id="task_name" class="rounded-md p-2" v-model="dataform.task_name">
 

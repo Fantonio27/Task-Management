@@ -17,7 +17,6 @@
       class="flex gap-1 h-max py-2 px-3 bg-green-600/90 hover:bg-green-600 ease-linear duration-150 text-white rounded-md font-medium text-sm shadow-sm"
       @click="modal = !modal"
     >
-      
       <Plus :size="20"/> Add Task
     </button>
   </header>
@@ -29,10 +28,9 @@
       <Card_Container status="cancelled"/>
   </main>
 
-  <!-- <Modal v-if="modal"/> -->
   <Teleport to="body">
-    <div class="absolute top-0 bg-black/30 w-full h-screen flex items-center justify-center">
-      <Modal/>
+    <div class="absolute top-0 bg-black/30 w-full h-screen flex items-center justify-center" v-if="modal">
+      <Modal @close-modal="modal = false" action="edit"/>
     </div>
   </Teleport>
 </template>
