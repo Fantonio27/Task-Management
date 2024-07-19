@@ -9,7 +9,7 @@ import axios from 'axios';
     defineProps<{action: string}>();
 
     const dataform = ref<Dataform>({
-        task_id: 0,
+        id: 0,
         task_name: "",
         description: "",
         status: "",

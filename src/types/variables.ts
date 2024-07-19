@@ -1,5 +1,5 @@
 export type Dataform = {
-    task_id: number,
+    id: number,
     task_name: string,
     description: string,
     status: string,

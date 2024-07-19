@@ -1,12 +1,13 @@
 <script setup lang="ts">
-    import {Pen, Trash2} from "lucide-vue-next";
-    import { type Dataform } from "../types/variables";
+    import {Pen, Trash2} from 'lucide-vue-next';
+    import { type Dataform } from '../types/variables';
 
     const props = defineProps<{color: string, task: Dataform}>()
 
     const {task_name, description, due_date} = props.task
 
     const date = due_date.split('-').reverse().join('/')
+
 </script>
 
 <template>
