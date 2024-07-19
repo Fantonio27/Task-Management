@@ -1,7 +1,15 @@
 <script setup lang="ts">
-
+  import { Plus } from 'lucide-vue-next';
 </script>
 
 <template>
- 
+  <header class="flex justify-between">
+    <div>
+      <h1 class=" font-bold text-2xl">My Tasks</h1>
+      <p class="text-sm">Drag and Drop the tasks to update its status</p>
+    </div>
+    <button class="flex gap-1 h-max py-2 px-3 bg-green-600/90 text-white rounded-md font-medium text-sm shadow-sm">
+      <Plus :size="20"/> Add Task
+    </button>
+  </header>
 </template>
