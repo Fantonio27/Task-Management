@@ -10,8 +10,8 @@ export async function PostData (dataform: Dataform) {
     await axios.post("http://localhost:3000/tasks", dataform).then((response)=> {return response})
 }
 
-export async function UpdataData (id: string) {
-    await axios.put(`http://localhost:3000/tasks/${id}`).then((data) => {return data})
+export async function UpdateData (id: string | null, dataform: Dataform) {
+    await axios.put(`http://localhost:3000/tasks/${id}`, dataform).then((data) => {return data})
 }
 
 export async function DeleteData (id: string | undefined) {

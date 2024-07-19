@@ -9,16 +9,18 @@
   const modal = ref<boolean>(false)
   const tasks = ref<Dataform[] | []>([])
 
+  const params = new URLSearchParams(window.location.search).get('id');
+
   onMounted(async() => {
     tasks.value = await FetchData();
 
-    const params = new URLSearchParams(window.location.search).get('id');
-
-    try{
-        await SearchData(params);
-        modal.value = true;
-    }catch(e){
-        modal.value = false;
+    if(params){
+      try{
+          await SearchData(params);
+          modal.value = true;
+      }catch(e){
+          modal.value = false;
+      }
     }
   })
 
@@ -50,7 +52,7 @@
 
   <Teleport to="body">
     <div class="absolute top-0 bg-black/30 w-full h-screen flex items-center justify-center" v-if="modal">
-      <Modal @close-modal="modal = false" action="edit"/>
+      <Modal :id="params"/>
     </div>
   </Teleport>
 </template>
