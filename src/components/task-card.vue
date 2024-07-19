@@ -1,7 +1,12 @@
 <script setup lang="ts">
     import {Pen, Trash2} from "lucide-vue-next";
+    import { type Dataform } from "../types/variables";
 
-    defineProps<{color: string}>()
+    const props = defineProps<{color: string, task: Dataform}>()
+
+    const {task_name, description, due_date} = props.task
+
+    const date = due_date.split('-').reverse().join('/')
 </script>
 
 <template>
@@ -15,8 +20,8 @@
             </div>
  
         </div>
-        <h1 class="font-bold">Prepare presentation slides</h1>
-        <p class="my-3 text-xs leading-5">Create slides for the project presentation. include key points and visuals</p>
-        <p class="text-xs text-right">Due Date: <b>31/05/2024</b></p>
+        <h1 class="font-bold">{{task_name}}</h1>
+        <p class="my-3 text-xs leading-5">{{description}}</p>
+        <p class="text-xs text-right">Due Date: <b>{{date}}</b></p>
     </div>
 </template>

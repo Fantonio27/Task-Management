@@ -1,10 +1,27 @@
 <script setup lang="ts">
   import { Plus } from 'lucide-vue-next';
+  import { ref, Teleport, onMounted} from 'vue';
+  import { type Dataform } from './types/variables';
   import Card_Container from "./components/card-container.vue"
-  import { ref, Teleport} from 'vue';
   import Modal from "./components/modal.vue"
-
+  import axios from 'axios';
+  
   const modal = ref<boolean>(false)
+  const tasks = ref<Dataform[] | []>([])
+
+  // watch(modal, async() => {
+  //   const { data } =  await axios.get("http://localhost:3000/tasks").then((data) => {return data})
+  //   tasks.value= data
+  // })
+
+  onMounted(async() => {
+    const { data } =  await axios.get("http://localhost:3000/tasks").then((data) => {return data})
+    tasks.value= data
+  })
+
+  function filterTask (status: string) {
+    return tasks.value?.filter((task)=> task.status == status)
+  }
 </script>
 
 <template>
@@ -22,10 +39,10 @@
   </header>
 
   <main class="flex gap-3">
-      <Card_Container status="pending"/>
-      <Card_Container status="progress"/>
-      <Card_Container status="completed"/>
-      <Card_Container status="cancelled"/>
+      <Card_Container status="pending" :tasks='filterTask("pending")'/>
+      <Card_Container status="progress" :tasks='filterTask("progress")'/>
+      <Card_Container status="completed" :tasks='filterTask("completed")'/>
+      <Card_Container status="cancelled" :tasks='filterTask("cancelled")'/>
   </main>
 
   <Teleport to="body">

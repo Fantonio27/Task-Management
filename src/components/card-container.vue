@@ -1,6 +1,8 @@
 <script setup lang="ts">
     import Task from "./task-card.vue";
-    const props = defineProps<{status: string}>();
+    import { type Dataform } from "../types/variables";
+
+    const props = defineProps<{status: string, tasks: Dataform[] | []}>();
 
     const colorSets = {
         pending: {
@@ -31,8 +33,7 @@
         {{status[0].toUpperCase() + status.substring(1)}} Tasks
         </h1>
         <div class="space-y-5">
-            <Task :color="buttonColor"/>
-            <Task :color="buttonColor"/>
+            <Task v-for="task in tasks" :task="task" :color="buttonColor"/>
         </div>
     </div>
 </template>
