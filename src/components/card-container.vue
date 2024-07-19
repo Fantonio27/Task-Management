@@ -6,19 +6,19 @@
 
     const colorSets = {
         pending: {
-            bgColor: "bg-yellow-400/70",
+            bgColor: "bg-yellow-400/60",
             buttonColor: "bg-yellow-700"
         },
         progress: {
-            bgColor: "bg-violet-400/70",
+            bgColor: "bg-violet-400/60",
             buttonColor: "bg-violet-900"
         },
         completed: {
-            bgColor: "bg-green-400/70",
+            bgColor: "bg-green-400/60",
             buttonColor: "bg-green-700"
         },
         cancelled: {
-            bgColor: "bg-red-400/70",
+            bgColor: "bg-red-400/60",
             buttonColor: "bg-red-700"
         },
     }
