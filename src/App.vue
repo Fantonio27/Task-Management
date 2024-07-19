@@ -2,7 +2,7 @@
   import { Plus } from 'lucide-vue-next';
   import { ref, Teleport, onMounted} from 'vue';
   import { type Dataform } from './types/variables';
-  import Card_Container from "./components/card-container.vue"
+  import CardContainer from "./components/card-container.vue"
   import Modal from "./components/modal.vue"
   import { FetchData, SearchData} from './services/api';
   
@@ -37,19 +37,19 @@
     </div>
     <button 
       class="flex gap-1 h-max py-2 px-3 bg-green-600/90 hover:bg-green-600 ease-linear duration-150 text-white rounded-md font-medium text-sm shadow-sm"
-      @click="modal = !modal"
-    >
+      @click="modal = !modal">
       <Plus :size="20"/> Add Task
     </button>
   </header>
 
   <main class="flex gap-3">
-      <Card_Container status="pending" :tasks='filterTask("pending")'/>
-      <Card_Container status="progress" :tasks='filterTask("progress")'/>
-      <Card_Container status="completed" :tasks='filterTask("completed")'/>
-      <Card_Container status="cancelled" :tasks='filterTask("cancelled")'/>
+      <CardContainer status="pending" :tasks='filterTask("pending")'/>
+      <CardContainer status="progress" :tasks='filterTask("progress")'/>
+      <CardContainer status="completed" :tasks='filterTask("completed")'/>
+      <CardContainer status="cancelled" :tasks='filterTask("cancelled")'/>
   </main>
 
+  <!-- Modal  -->
   <Teleport to="body">
     <div class="absolute top-0 bg-black/30 w-full h-screen flex items-center justify-center" v-if="modal">
       <Modal :id="params"/>
