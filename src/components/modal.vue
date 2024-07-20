@@ -18,11 +18,16 @@
     })
 
     function submit(){
+        const {task_name, description} = dataform.value;
+        dataform.value.task_name = task_name[0].toUpperCase() + task_name.substring(1);
+        dataform.value.description = description[0].toUpperCase() + description.substring(1);
+
         if(props.id){
             UpdateData(props.id, dataform.value)
         }else{
             PostData(dataform.value); 
         }
+        alert(`Successfully, ${props.id?  'Update a Task!' : 'Create a Task!'}`)
         location.replace('/')
     }
 
@@ -46,10 +51,10 @@
             <h1 class="font-bold uppercase text-2xl text-center">{{id? "Edit Task": "Create Task"}}</h1>
 
             <label for="task_name" class="mt-3 mb-1">Task Name</label>
-            <input type="text" data-testId="task_name" class="rounded-md p-2" v-model="dataform.task_name" maxlength="50" minlength="2" required>
+            <input type="text" data-testId="task_name" class="rounded-md p-2" v-model.trim="dataform.task_name" maxlength="50" minlength="2" required>
 
             <label for="description" class="mt-3 mb-1">Description</label>
-            <textarea type="text" data-testId="description" class="rounded-md p-2" rows="4" v-model="dataform.description" maxlength="255" minlength="2" required></textarea>
+            <textarea type="text" data-testId="description" class="rounded-md p-2" rows="4" v-model.trim="dataform.description" maxlength="255" minlength="2" required></textarea>
 
             <label for="status" class="mt-3 mb-1">Status</label>
             <select class="rounded-md p-2" data-testId="status" v-model="dataform.status" required>

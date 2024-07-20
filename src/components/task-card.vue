@@ -10,12 +10,16 @@
     const date = due_date.split('-').reverse().join('/')
 
     function taskDelete () {
-        try{
-            DeleteData(id);
-            location.reload()
-        }catch(error){
-            console.log(error)
-        }  
+        let text = `Are you sure you want to delete this task?\nTask ID: ${id}\nTask Name: ${task_name}`;
+        
+        if(confirm(text) == true){
+            try{
+                DeleteData(id);
+                location.reload()
+            }catch(error){
+                console.log(error)
+            }
+        } 
     }
 </script>
 
