@@ -22,3 +22,10 @@ export async function SearchData (id: string | null) {
     const { data } = await axios.get(`http://localhost:3000/tasks/${id}`).then((data) => {return data});
     return data
 }
+
+export async function UpdateStatus (id: string, status: string){
+    const response : Dataform = await SearchData(id) 
+    response.status = status
+    
+    await UpdateData(id, response)
+}
