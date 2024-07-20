@@ -51,7 +51,7 @@
 
   <!-- Modal  -->
   <Teleport to="body">
-    <div class="absolute top-0 bg-black/30 w-full h-screen flex items-center justify-center" v-if="modal" data-testId="modal">
+    <div class="fixed top-0 bg-black/30 w-full h-dvh flex items-center justify-center" v-if="modal" data-testId="modal">
       <Modal :id="params"/>
     </div>
   </Teleport>
